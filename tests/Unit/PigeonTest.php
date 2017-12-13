@@ -29,11 +29,11 @@ class PigeonTest extends TestCase
      *
      * @dataProvider \Test\Provider\ResponseProvider::sendEmailSuccessfully()
      */
-    public function testSendAnEmail($responses)
+    public function testSendAnEmailUsingBasicParams($responses)
     {
         $client = $this->getClientMock($responses);
         $this->instance->setClient($client);
-        $response = $this->instance->sendEmail('sender@mailinator.com', 'reciptient@mailinator.com', 'Hello World', 'You would not believe that this was sent by Go!');
+        $response = $this->instance->sendBasicEmail('sender@mailinator.com', 'reciptient@mailinator.com', 'Hello World', 'You would not believe that this was sent by Go!');
         $this->assertTrue($response);
     }
 

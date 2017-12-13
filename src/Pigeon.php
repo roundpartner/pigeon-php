@@ -21,7 +21,7 @@ class Pigeon extends RestClient implements PigeonInterface
      *
      * @throws Exception
      */
-    public function sendEmail($from, $to, $subject, $text)
+    public function sendBasicEmail($from, $to, $subject, $text)
     {
         $data = [
             'from' => $from,

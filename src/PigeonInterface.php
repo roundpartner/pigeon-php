@@ -14,5 +14,5 @@ interface PigeonInterface
      *
      * @throws Exception
      */
-    public function sendEmail($from, $to, $subject, $text);
+    public function sendBasicEmail($from, $to, $subject, $text);
 }
