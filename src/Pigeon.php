@@ -18,7 +18,7 @@ class Pigeon extends RestClient implements PigeonInterface
      *
      * @return bool
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function sendEmail($email)
     {
@@ -40,7 +40,7 @@ class Pigeon extends RestClient implements PigeonInterface
      *
      * @return bool
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function sendBasicEmail($from, $to, $subject, $text, $html = '')
     {
@@ -57,7 +57,7 @@ class Pigeon extends RestClient implements PigeonInterface
      *
      * @return bool
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function sendTrackedEmail($from, $to, $subject, $text, $html = '')
     {
