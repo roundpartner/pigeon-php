@@ -4,6 +4,7 @@ namespace Test\Unit;
 
 use \PHPUnit\Framework\TestCase;
 use RoundPartner\Pigeon\Pigeon;
+use RoundPartner\Pigeon\PigeonInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -13,13 +14,28 @@ class PigeonTest extends TestCase
 {
 
     /**
-     * @var Pigeon
+     * @var PigeonInterface
      */
     protected $instance;
 
     public function setUp()
     {
         $this->instance = new Pigeon('http://0.0.0.0:3411');
+    }
+
+    /**
+     * @param Response[] $responses
+     *
+     * @throws \RoundPartner\Pigeon\Exception
+     *
+     * @dataProvider \Test\Provider\ResponseProvider::sendEmailSuccessfully()
+     */
+    public function testSendEmail($responses)
+    {
+        $client = $this->getClientMock($responses);
+        $this->instance->setClient($client);
+        $response = $this->instance->sendEmail([]);
+        $this->assertTrue($response);
     }
 
     /**

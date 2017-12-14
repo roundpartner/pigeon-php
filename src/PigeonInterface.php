@@ -4,6 +4,16 @@ namespace RoundPartner\Pigeon;
 
 interface PigeonInterface
 {
+
+    /**
+     * @param array $options
+     *
+     * @return bool
+     *
+     * @throws Exception
+     */
+    public function sendEmail($options);
+
     /**
      * @param string $from
      * @param string $to

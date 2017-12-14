@@ -12,6 +12,24 @@ class Pigeon extends RestClient implements PigeonInterface
     }
 
     /**
+     * @param array $options
+     *
+     * @return bool
+     *
+     * @throws Exception
+     */
+    public function sendEmail($options)
+    {
+        $response = $this->client->post('/email', [
+            'json' => $options
+        ]);
+        if ($response->getStatusCode() !== 204) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * @param string $from
      * @param string $to
      * @param string $subject
@@ -29,12 +47,6 @@ class Pigeon extends RestClient implements PigeonInterface
             'subject' => $subject,
             'text' => $text,
         ];
-        $response = $this->client->post('/email', [
-            'json' => $data
-        ]);
-        if ($response->getStatusCode() !== 204) {
-            return false;
-        }
-        return true;
+        return $this->sendEmail($data);
     }
 }
