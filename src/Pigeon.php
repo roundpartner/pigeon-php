@@ -3,6 +3,7 @@
 namespace RoundPartner\Pigeon;
 
 use RoundPartner\Pigeon\Entity\Email;
+use RoundPartner\Pigeon\Entity\EmailTemplate;
 
 class Pigeon extends RestClient implements PigeonInterface
 {
@@ -62,6 +63,21 @@ class Pigeon extends RestClient implements PigeonInterface
     public function sendTrackedEmail($from, $to, $subject, $text, $html = '')
     {
         $email = Email::factory($from, $to, $subject, $text, $html, true);
+        return $this->sendEmail($email);
+    }
+
+    /**
+     * @param string $to
+     * @param string $template
+     * @param array $params
+     *
+     * @return bool
+     *
+     * @throws \Exception
+     */
+    public function sendEmailTemplate($to, $template, $params)
+    {
+        $email = EmailTemplate::factory($to, $template, $params);
         return $this->sendEmail($email);
     }
 }

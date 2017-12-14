@@ -39,4 +39,15 @@ interface PigeonInterface
      * @throws \Exception
      */
     public function sendTrackedEmail($from, $to, $subject, $text, $html = '');
+
+    /**
+     * @param string $to
+     * @param string $template
+     * @param array $params
+     *
+     * @return bool
+     *
+     * @throws \Exception
+     */
+    public function sendEmailTemplate($to, $template, $params);
 }

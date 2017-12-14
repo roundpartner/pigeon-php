@@ -72,6 +72,21 @@ class PigeonTest extends TestCase
     /**
      * @param Response[] $responses
      *
+     * @throws \Exception
+     *
+     * @dataProvider \Test\Provider\ResponseProvider::sendEmailSuccessfully()
+     */
+    public function testSendAnEmailUsingTemplate($responses)
+    {
+        $client = $this->getClientMock($responses);
+        $this->instance->setClient($client);
+        $response = $this->instance->sendEmailTemplate('recipient@mailinator.com', 'test', []);
+        $this->assertTrue($response);
+    }
+
+    /**
+     * @param Response[] $responses
+     *
      * @return Client
      */
     protected function getClientMock($responses)
