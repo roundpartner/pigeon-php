@@ -35,7 +35,22 @@ class PigeonTest extends TestCase
     {
         $client = $this->getClientMock($responses);
         $this->instance->setClient($client);
-        $response = $this->instance->sendEmail(Email::factory('sender@mailinator.com', 'reciptient@mailinator.com', 'Hello World', 'You would not believe that this was sent by Go!'));
+        $response = $this->instance->sendEmail(Email::factory('sender@mailinator.com', 'recipient@mailinator.com', 'Hello World', 'You would not believe that this was sent by Go!'));
+        $this->assertTrue($response);
+    }
+
+    /**
+     * @param Response[] $responses
+     *
+     * @throws \RoundPartner\Pigeon\Exception
+     *
+     * @dataProvider \Test\Provider\ResponseProvider::sendEmailSuccessfully()
+     */
+    public function testSendTrackedEmail($responses)
+    {
+        $client = $this->getClientMock($responses);
+        $this->instance->setClient($client);
+        $response = $this->instance->sendTrackedEmail('sender@mailinator.com', 'recipient@mailinator.com', 'Hello World', 'You would not believe that this was sent by Go!');
         $this->assertTrue($response);
     }
 
@@ -50,7 +65,7 @@ class PigeonTest extends TestCase
     {
         $client = $this->getClientMock($responses);
         $this->instance->setClient($client);
-        $response = $this->instance->sendBasicEmail('sender@mailinator.com', 'reciptient@mailinator.com', 'Hello World', 'You would not believe that this was sent by Go!');
+        $response = $this->instance->sendBasicEmail('sender@mailinator.com', 'recipient@mailinator.com', 'Hello World', 'You would not believe that this was sent by Go!');
         $this->assertTrue($response);
     }
 

@@ -25,6 +25,16 @@ class Email
     public $text;
 
     /**
+     * @var string
+     */
+    public $html;
+
+    /**
+     * @var bool
+     */
+    public $track;
+
+    /**
      * @return array
      */
     public function toArray()
@@ -34,6 +44,8 @@ class Email
             'to' => $this->to,
             'subject' => $this->subject,
             'text' => $this->text,
+            'html' => $this->html,
+            'track' => true === $this->track,
         ];
     }
 
@@ -42,16 +54,20 @@ class Email
      * @param string $to
      * @param string $subject
      * @param string $text
+     * @param string $html
+     * @param bool $track
      *
      * @return Email
      */
-    public static function factory($from, $to, $subject, $text)
+    public static function factory($from, $to, $subject, $text, $html = '', $track = false)
     {
         $email = new Email();
         $email->from = $from;
         $email->to = $to;
         $email->subject = $subject;
         $email->text = $text;
+        $email->html = $html;
+        $email->track = $track;
         return $email;
     }
 }

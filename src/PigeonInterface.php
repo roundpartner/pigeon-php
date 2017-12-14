@@ -19,10 +19,24 @@ interface PigeonInterface
      * @param string $to
      * @param string $subject
      * @param string $text
+     * @param string $html
      *
      * @return bool
      *
      * @throws Exception
      */
-    public function sendBasicEmail($from, $to, $subject, $text);
+    public function sendBasicEmail($from, $to, $subject, $text, $html = '');
+
+    /**
+     * @param string $from
+     * @param string $to
+     * @param string $subject
+     * @param string $text
+     * @param string $html
+     *
+     * @return bool
+     *
+     * @throws Exception
+     */
+    public function sendTrackedEmail($from, $to, $subject, $text, $html = '');
 }
