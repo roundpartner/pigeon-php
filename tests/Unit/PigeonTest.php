@@ -27,7 +27,7 @@ class PigeonTest extends TestCase
     /**
      * @param Response[] $responses
      *
-     * @throws \RoundPartner\Pigeon\Exception
+     * @throws \Exception
      *
      * @dataProvider \Test\Provider\ResponseProvider::sendEmailSuccessfully()
      */
@@ -42,7 +42,7 @@ class PigeonTest extends TestCase
     /**
      * @param Response[] $responses
      *
-     * @throws \RoundPartner\Pigeon\Exception
+     * @throws \Exception
      *
      * @dataProvider \Test\Provider\ResponseProvider::sendEmailSuccessfully()
      */
@@ -57,7 +57,7 @@ class PigeonTest extends TestCase
     /**
      * @param Response[] $responses
      *
-     * @throws \RoundPartner\Pigeon\Exception
+     * @throws \Exception
      *
      * @dataProvider \Test\Provider\ResponseProvider::sendEmailSuccessfully()
      */

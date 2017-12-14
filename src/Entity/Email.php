@@ -35,6 +35,11 @@ class Email
     public $track;
 
     /**
+     * @var string
+     */
+    public $replyTo;
+
+    /**
      * @return array
      */
     public function toArray()
@@ -46,6 +51,7 @@ class Email
             'text' => $this->text,
             'html' => $this->html,
             'track' => true === $this->track,
+            'reply_to' => $this->replyTo,
         ];
     }
 
