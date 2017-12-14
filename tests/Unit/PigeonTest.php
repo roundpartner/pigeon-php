@@ -3,6 +3,7 @@
 namespace Test\Unit;
 
 use \PHPUnit\Framework\TestCase;
+use RoundPartner\Pigeon\Entity\Email;
 use RoundPartner\Pigeon\Pigeon;
 use RoundPartner\Pigeon\PigeonInterface;
 use GuzzleHttp\Client;
@@ -34,7 +35,7 @@ class PigeonTest extends TestCase
     {
         $client = $this->getClientMock($responses);
         $this->instance->setClient($client);
-        $response = $this->instance->sendEmail([]);
+        $response = $this->instance->sendEmail(Email::factory('sender@mailinator.com', 'reciptient@mailinator.com', 'Hello World', 'You would not believe that this was sent by Go!'));
         $this->assertTrue($response);
     }
 

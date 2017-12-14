@@ -6,13 +6,13 @@ interface PigeonInterface
 {
 
     /**
-     * @param array $options
+     * @param Entity\Email $email
      *
      * @return bool
      *
      * @throws Exception
      */
-    public function sendEmail($options);
+    public function sendEmail($email);
 
     /**
      * @param string $from

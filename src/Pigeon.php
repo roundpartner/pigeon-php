@@ -2,6 +2,8 @@
 
 namespace RoundPartner\Pigeon;
 
+use RoundPartner\Pigeon\Entity\Email;
+
 class Pigeon extends RestClient implements PigeonInterface
 {
     public function __construct($baseUri)
@@ -12,16 +14,16 @@ class Pigeon extends RestClient implements PigeonInterface
     }
 
     /**
-     * @param array $options
+     * @param Entity\Email $email
      *
      * @return bool
      *
      * @throws Exception
      */
-    public function sendEmail($options)
+    public function sendEmail($email)
     {
         $response = $this->client->post('/email', [
-            'json' => $options
+            'json' => $email->toArray(),
         ]);
         if ($response->getStatusCode() !== 204) {
             return false;
@@ -41,12 +43,7 @@ class Pigeon extends RestClient implements PigeonInterface
      */
     public function sendBasicEmail($from, $to, $subject, $text)
     {
-        $data = [
-            'from' => $from,
-            'to' => $to,
-            'subject' => $subject,
-            'text' => $text,
-        ];
-        return $this->sendEmail($data);
+        $email = Email::factory($from, $to, $subject, $text);
+        return $this->sendEmail($email);
     }
 }
