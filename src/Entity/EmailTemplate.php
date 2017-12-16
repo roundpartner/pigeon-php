@@ -26,6 +26,11 @@ class EmailTemplate
     public $replyTo;
 
     /**
+     * @var string
+     */
+    public $subject;
+
+    /**
      * @return array
      */
     public function toArray()
@@ -35,6 +40,7 @@ class EmailTemplate
             'template' => $this->template,
             'params' => $this->params,
             'reply_to' => $this->replyTo,
+            'subject' => $this->subject,
         ];
     }
 
