@@ -15,4 +15,14 @@ class ResponseProvider
             [[new Response(204, [], '')]],
         ];
     }
+
+    /**
+     * @return Response[]
+     */
+    public static function getTemplateSuccessfully()
+    {
+        return [
+            [[new Response(200, [], '{"to":"","from":"","subject":"","text":"this is a text","html":"this is a html"}')]],
+        ];
+    }
 }

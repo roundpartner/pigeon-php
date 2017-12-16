@@ -2,6 +2,8 @@
 
 namespace RoundPartner\Pigeon;
 
+use RoundPartner\Pigeon\Entity\Email;
+
 interface PigeonInterface
 {
 
@@ -50,4 +52,12 @@ interface PigeonInterface
      * @throws \Exception
      */
     public function sendEmailTemplate($to, $template, $params);
+
+    /**
+     * @param string $template
+     * @param array $params
+     *
+     * @return Email
+     */
+    public function template($template, $params);
 }
