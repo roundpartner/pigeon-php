@@ -87,7 +87,8 @@ class Pigeon extends RestClient implements PigeonInterface
      *
      * @return Email
      */
-    public function template($template, $params) {
+    public function template($template, $params)
+    {
         $email = EmailTemplate::factory('', $template, $params);
         $response = $this->client->post('/template', [
             'json' => $email->toArray(),
