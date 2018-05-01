@@ -40,6 +40,11 @@ class Email
     public $replyTo;
 
     /**
+     * @var bool
+     */
+    public $report;
+
+    /**
      * @return array
      */
     public function toArray()
