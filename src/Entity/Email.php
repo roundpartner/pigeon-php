@@ -57,6 +57,7 @@ class Email
             'html' => $this->html,
             'track' => true === $this->track,
             'reply_to' => $this->replyTo,
+            'report' => true === $this->report,
         ];
     }
 

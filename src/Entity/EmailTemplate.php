@@ -31,6 +31,11 @@ class EmailTemplate
     public $subject;
 
     /**
+     * @var bool
+     */
+    public $report;
+
+    /**
      * @return array
      */
     public function toArray()
@@ -41,6 +46,7 @@ class EmailTemplate
             'params' => $this->params,
             'reply_to' => $this->replyTo,
             'subject' => $this->subject,
+            'report' => true === $this->report,
         ];
     }
 
