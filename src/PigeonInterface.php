@@ -60,4 +60,11 @@ interface PigeonInterface
      * @return Email
      */
     public function template($template, $params);
+
+    /**
+     * @param string $ip
+     *
+     * @return bool
+     */
+    public function blocked($ip);
 }

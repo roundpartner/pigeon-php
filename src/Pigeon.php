@@ -100,4 +100,23 @@ class Pigeon extends RestClient implements PigeonInterface
         $email = Email::factory($json->from, $json->to, $json->subject, $json->text, $json->html);
         return $email;
     }
+
+    /**
+     * @param string $ip
+     *
+     * @return bool
+     */
+    public function blocked($ip)
+    {
+        $response = $this->client->post('/verify', [
+            'json' => [
+                'ip' => $ip,
+            ],
+        ]);
+        if ($response->getStatusCode() !== 200) {
+            return false;
+        }
+        $json = json_decode($response->getBody()->getContents());
+        return $json->blocked;
+    }
 }

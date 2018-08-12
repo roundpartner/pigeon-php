@@ -111,4 +111,19 @@ class PigeonTest extends TestCase
         $client = new Client(['handler' => $handler]);
         return $client;
     }
+
+    /**
+     * @param Response[] $responses
+     *
+     * @throws \Exception
+     *
+     * @dataProvider \Test\Provider\ResponseProvider::getBlocked()
+     */
+    public function testVerify($responses)
+    {
+        $client = $this->getClientMock($responses);
+        $this->instance->setClient($client);
+        $response = $this->instance->blocked('127.0.0.1');
+        $this->assertTrue($response);
+    }
 }
