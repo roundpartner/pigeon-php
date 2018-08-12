@@ -45,6 +45,11 @@ class Email
     public $report;
 
     /**
+     * @var string
+     */
+    public $senderIp;
+
+    /**
      * @return array
      */
     public function toArray()
@@ -58,6 +63,7 @@ class Email
             'track' => true === $this->track,
             'reply_to' => $this->replyTo,
             'report' => true === $this->report,
+            'sender_ip' => $this->senderIp,
         ];
     }
 
