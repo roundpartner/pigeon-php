@@ -103,13 +103,15 @@ class Pigeon extends RestClient implements PigeonInterface
 
     /**
      * @param string $ip
+     * @param string $email
      *
      * @return bool
      */
-    public function blocked($ip)
+    public function blocked($ip, $email = '')
     {
         $response = $this->client->post('/verify', [
             'json' => [
+                'email' => $email,
                 'ip' => $ip,
             ],
         ]);
